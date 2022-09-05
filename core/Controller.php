@@ -3,6 +3,8 @@ namespace core;
 
 class Controller
 {
+    public $title;
+
     public function render($view, $param)
     {
         extract($param);
@@ -10,11 +12,9 @@ class Controller
         ob_start();
         $controller = Application::getController();
 
-        //require __DIR__ . '/../views/test/' . $view . '.php';
-        require __DIR__ . '/../views/' . lcfirst($controller) . '/' . $view . '.php';
+        require Application::$config->basePath . '/views/' . lcfirst($controller) . '/' . $view . '.php';
 
-        $output = ob_get_clean();
-
-        echo $output;
+        $content = ob_get_clean();
+        require Application::$config->basePath . '/views/layouts/main.php';
     }
 }

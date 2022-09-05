@@ -1,12 +1,7 @@
 <?php
-/*$config [
-    'basePath' => dirname(__DIR__),
-
-];*/
-
-
 
 return $config = [
-    'basePath' => dirname(__DIR__),
+    'basePath' => __DIR__,
+    'controllerDefault' => 'test',
 ];
 

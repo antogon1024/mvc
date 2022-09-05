@@ -1,14 +1,23 @@
 <?php
 namespace core;
 
-//use controllers\Test;
-
 class Application
 {
     public static $controller;
     public $action;
+    public static $config;
+    public static $params;
 
-    //public $viewPath;
+    public function __construct($config)
+    {
+        $ob = new \stdClass();
+
+        foreach ($config as $name=>$value) {
+            $ob->$name = $value;
+        }
+
+        self::$config = $ob;
+    }
 
     public function run()
     {
@@ -17,15 +26,15 @@ class Application
        $class = 'controllers\\' . self::$controller;
        $action = $this->action;
 
-       $ob = new $class('asd');
+       $ob = new $class();
        $ob->$action();
     }
 
     public function route()
     {
         $url = trim($_SERVER['REQUEST_URI'], '/');
-        if($url == '/'){
-            $controller = 'default';
+        if($url == ''){
+            $controller = self::$config['controllerDefault'];
             $action = 'index';
         }else{
             $ar = explode('/', $url);
@@ -44,4 +53,13 @@ class Application
         return self::$controller;
     }
 
+    public function __set($name, $value)
+    {
+        self::$params[$name] = $value;
+    }
+
+    public function __get($name)
+    {
+        return self::$params[$name];
+    }
 }
