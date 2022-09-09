@@ -1,7 +1,14 @@
 <?php $this->title = 'page bbb'; ?>
-<h3>dddddddddddddd</h3>
+<?php $this->addCss('/web/css/mvc/bbb.css', 3); ?>
 
+<h3>page bbb <?='ffffffffffffffff'?></h3>
 <b><?=$test?></b>
-<?php
-//echo '<pre>';print_r($this);exit;
-?>
+
+<div class="body-content">
+    <div class="row">
+        <div class="col-lg-3">fffffff</div>
+        <div class="col-lg-9">fffffff</div>
+
+    </div>
+</div>
+
