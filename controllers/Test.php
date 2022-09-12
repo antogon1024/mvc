@@ -2,6 +2,8 @@
 namespace controllers;
 
 use core\Controller;
+//use core\Application;
+use models\Site;
 
 class Test extends Controller
 {
@@ -15,6 +17,14 @@ class Test extends Controller
 
     public function bbb()
     {
+        $site = Site::getRow("SELECT * FROM `site` WHERE `id` = ?", 61);
+
+        //почему не работает если метод one -не статический
+        //$site = new Site;
+        //$site = Site::one("SELECT * FROM `site` WHERE `id` = ?", 61);
+
+        echo '<pre>';print_r($site);exit;
+
         $test = 'asdfgh123';
         $this->render('bbb', [
             'test' => $test,
