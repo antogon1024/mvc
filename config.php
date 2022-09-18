@@ -9,6 +9,10 @@ return $config = [
         'username' => 'pma',
         'password' => 'pmapass',
         'charset' => 'utf8',
-    ]
+    ],
+    'rules' => [
+        '<category:[a-z]+>/<id:\d+>' => 'test/index',
+        //'s-<category:[a-z]+>/p-<id:\d+>' => 'test/index',
+    ],
 ];
 

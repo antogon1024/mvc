@@ -7,9 +7,12 @@ use models\Site;
 
 class Test extends Controller
 {
-    public function index()
+    public function index($category, $id)
     {
-        //echo 'test2';
+       echo $category .'--'. $id;exit;
+        $site = Site::getRow("SELECT * FROM `site` WHERE `id` = ?", 61);
+        echo '<pre>';print_r($site);exit;
+
         $this->render('index', [
             //'test' => $test,
         ]);
@@ -17,7 +20,7 @@ class Test extends Controller
 
     public function bbb()
     {
-        $site = Site::getRow("SELECT * FROM `site` WHERE `id` = ?", 61);
+
 
         //почему не работает если метод one -не статический
         //$site = new Site;
