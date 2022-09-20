@@ -9,12 +9,12 @@ class Test extends Controller
 {
     public function index($category, $id)
     {
-       echo $category .'--'. $id;exit;
-        $site = Site::getRow("SELECT * FROM `site` WHERE `id` = ?", 61);
-        echo '<pre>';print_r($site);exit;
+       //echo $category .'--'. $id;
+        $site = Site::getRow("SELECT * FROM `site` WHERE `id` = ?", $id);
+        //echo '<pre>';print_r($site);exit;
 
         $this->render('index', [
-            //'test' => $test,
+            'site' => $site,
         ]);
     }
 
